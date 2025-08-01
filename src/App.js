@@ -1,11 +1,12 @@
-import logo from "./logo.svg";
-import "./App.css";
+import Body from "./components/Body";
+import Browse from "./components/Browse";
 
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white tex-3xl">
-      Hello, World!
-    </div>
+    <>
+      <Body />
+      <Browse />
+    </>
   );
 }
 
