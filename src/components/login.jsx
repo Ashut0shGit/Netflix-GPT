@@ -2,6 +2,11 @@ import Header from "./Header";
 import { SquareCheck } from "lucide-react";
 import { useState, useRef } from "react";
 import { checkValidData } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -11,10 +16,48 @@ const Login = () => {
   const password = useRef(null);
 
   const handleButtonClick = () => {
-    // Handle sign in or sign up logic here
+    // Handled sign in or sign up logic here
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
-    console.log(message);
+
+    if (message) return;
+
+    if (!isSignInForm) {
+      //Sign Up logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
+    } else {
+      //Sign In logic
+
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
+    }
   };
 
   const toggleForm = () => {
@@ -22,19 +65,21 @@ const Login = () => {
   };
 
   return (
-    <div className="relative h-screen w-screen">
+    <div className="relative min-h-screen w-full overflow-x-hidden overflow-y-auto">
       <Header className="relative z-10" />
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 min-h-screen">
         <img
           className="object-cover w-full h-full"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_large.jpg"
           alt="Netflix Background"
         />
-        <div className="absolute inset-0 bg-black opacity-60"></div>
+        <div className="absolute inset-0 bg-black opacity-65"></div>
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-3/12 p-12 absolute my-36  mx-auto right-0 left-0 bg-black bg-opacity-70  rounded-lg text-white"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+             w-[90%] sm:w-[400px] p-6 sm:p-10 bg-black bg-opacity-70 
+             rounded-lg text-white"
       >
         <h1 className="text-3xl font-bold py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
@@ -56,7 +101,7 @@ const Login = () => {
           ref={password}
           className="p-3 my-3 w-full bg-[#333] bg-opacity-50 text-white  border border-[#a8a29e] rounded-md"
           type="password"
-          placeholder="password"
+          placeholder="Password"
         />
         <p className="text-red-600 text-sm">{errorMessage}</p>
         <button
@@ -65,23 +110,36 @@ const Login = () => {
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
-        <p className="flex items-center text-sm">
+        {/* <p className="flex items-center text-sm">
           <SquareCheck /> Remember me
-        </p>
+        </p> */}
+        <div className="flex flex-row text-sm font-semibold items-center justify-between">
+          <div className="flex items-center gap-2">
+            <input type="checkbox" className=" w-4 h-4" />
+            <label>Remember me</label>
+          </div>
+          <span className="font-semibold cursor-pointer hover:underline">
+            Forgot password?
+          </span>
+        </div>
         <p
-          className="flex items-center text-sm my-2 cursor-pointer"
+          className="flex justify-center items-center text-sm my-4 cursor-pointer"
           onClick={toggleForm}
         >
           {isSignInForm ? (
             <>
               <span className="text-gray-400">New to Netflix ?</span> &nbsp;
-              <span className="text-white font-semibold">Sign up now.</span>
+              <span className="text-white font-semibold hover:underline">
+                Sign up now.
+              </span>
             </>
           ) : (
             <>
               <span className="text-gray-400">Already have an account ?</span>{" "}
               &nbsp;
-              <span className="text-white font-semibold">Sign in now.</span>
+              <span className="text-white font-semibold hover:underline">
+                Sign in now.
+              </span>
             </>
           )}
         </p>
