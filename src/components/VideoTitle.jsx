@@ -5,7 +5,7 @@ const VideoTitle = ({ id, logo, title, desc }) => {
   const logoUrl = useMovieLogo(id);
 
   return (
-    <div className="w-full aspect-video absolute pt-[17%] px-6 md:px-12 lg:px-24 text-white bg-gradient-to-r from-black inset-0">
+    <div className="w-full aspect-video absolute pt-[17%] px-6 md:px-12 lg:px-24 text-white bg-gradient-to-r from-black">
       {logoUrl ? (
         <img
           className="w-[140px] md:w-[200px] lg:w-[260px] mb-4"
