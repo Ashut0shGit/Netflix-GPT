@@ -18,7 +18,7 @@ const VideoTitle = ({ id, logo, title, desc }) => {
         </h1>
       )}
 
-      <p className="text-xs md:text-sm lg:text-base max-w-xl mb-4 md:mb-6 line-clamp-3">
+      <p className="text-xs md:text-sm lg:text-base max-w-xl mb-4 md:mb-6 line-clamp-8">
         {desc}
       </p>
       <div className="flex gap-3 md:gap-4">

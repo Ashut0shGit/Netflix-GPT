@@ -8,7 +8,7 @@ const MainContainer = () => {
 
   if (!movies || movies.length === 0) return null;
 
-  const mainMovie = movies.length >= 4 ? movies[4] : movies[0];
+  const mainMovie = movies.length >= 10 ? movies[14] : movies[0];
   console.log("Main movie:", mainMovie);
 
   const { id, poster_path, original_title, overview } = mainMovie;
