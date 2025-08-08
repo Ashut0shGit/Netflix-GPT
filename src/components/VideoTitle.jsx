@@ -5,10 +5,10 @@ const VideoTitle = ({ id, logo, title, desc }) => {
   const logoUrl = useMovieLogo(id);
 
   return (
-    <div className="w-full aspect-video absolute pt-[17%] px-6 md:px-12 lg:px-24 text-white bg-gradient-to-r from-black">
+    <div className="z-30  w-full aspect-video absolute pt-[17%] px-6 md:px-12 lg:px-24 text-white bg-gradient-to-r from-black">
       {logoUrl ? (
         <img
-          className="w-[140px] md:w-[200px] lg:w-[260px] mb-4"
+          className="w-[160px] md:w-[220px] lg:w-[320px] mb-4"
           src={logoUrl}
           alt="Movie Poster"
         />
@@ -18,7 +18,7 @@ const VideoTitle = ({ id, logo, title, desc }) => {
         </h1>
       )}
 
-      <p className="text-xs md:text-sm lg:text-base max-w-xl mb-4 md:mb-6 line-clamp-8">
+      <p className="text-xs md:text-sm lg:text-sm max-w-xl mb-4 md:mb-6 line-clamp-4">
         {desc}
       </p>
       <div className="flex gap-3 md:gap-4">

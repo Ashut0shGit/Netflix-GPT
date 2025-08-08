@@ -8,7 +8,7 @@ const MainContainer = () => {
 
   if (!movies || movies.length === 0) return null;
 
-  const mainMovie = movies.length >= 10 ? movies[14] : movies[0];
+  const mainMovie = movies.length >= 10 ? movies[13] : movies[0];
   console.log("Main movie:", mainMovie);
 
   const { id, poster_path, original_title, overview } = mainMovie;
@@ -16,13 +16,15 @@ const MainContainer = () => {
 
   return (
     <div className="overflow-x-hidden">
-      <VideoTitle
-        id={id}
-        logo={poster_path}
-        title={original_title}
-        desc={overview}
-      />
-      <VideoBackground id={id} />
+      <div className="relative">
+        <VideoTitle
+          id={id}
+          logo={poster_path}
+          title={original_title}
+          desc={overview}
+        />
+        <VideoBackground id={id} />
+      </div>
     </div>
   );
 };
