@@ -20,7 +20,7 @@ const VideoBackground = ({ id }) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>
-      {/* <div className="absolute bottom-0 w-full h-60 bg-gradient-to-t from-black via-transparent to-transparent z-10" /> */}
+      <div className="absolute bottom-0 w-full h-60 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
     </div>
   );
 };
