@@ -13,12 +13,12 @@ const VideoTitle = ({ id, logo, title, desc }) => {
           alt="Movie Poster"
         />
       ) : (
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 ">
           {title}
         </h1>
       )}
 
-      <p className="text-xs md:text-sm lg:text-sm max-w-xl mb-4 md:mb-6 line-clamp-4">
+      <p className="text-xs md:text-sm lg:text-sm max-w-[60ch] mb-4 md:mb-6 line-clamp-4">
         {desc}
       </p>
       <div className="flex gap-3 md:gap-4">
