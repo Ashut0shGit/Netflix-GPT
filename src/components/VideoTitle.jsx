@@ -8,7 +8,7 @@ const VideoTitle = ({ id, logo, title, desc }) => {
     <div className="z-30  w-full aspect-video absolute pt-[17%] px-6 md:px-12 lg:px-24 text-white bg-gradient-to-r from-black">
       {logoUrl ? (
         <img
-          className="w-[160px] md:w-[220px] lg:w-[320px] mb-4"
+          className="w-[160px] md:w-[220px] lg:w-[280px] mb-4"
           src={logoUrl}
           alt="Movie Poster"
         />
