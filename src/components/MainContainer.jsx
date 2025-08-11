@@ -4,11 +4,11 @@ import VideoTitle from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
 
 const MainContainer = () => {
-  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
+  const movies = useSelector((store) => store.movies?.TopRatedMovies);
 
   if (!movies || movies.length === 0) return null;
 
-  const mainMovie = movies.length >= 10 ? movies[17] : movies[0];
+  const mainMovie = movies.length >= 10 ? movies[0] : movies[0];
   console.log("Main movie:", mainMovie);
 
   const { id, poster_path, original_title, overview } = mainMovie;
