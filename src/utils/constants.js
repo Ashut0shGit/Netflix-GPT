@@ -26,3 +26,9 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "spanish", name: "Spanish" },
 ];
+
+export const OPENAI_KEY =
+  "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";
+
+export const GROQ_API_KEY =
+  "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";
