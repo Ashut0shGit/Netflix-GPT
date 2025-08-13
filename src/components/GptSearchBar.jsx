@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { NETFLIX_BACKGROUND } from "../utils/constants";
+import { API_OPTIONS, NETFLIX_BACKGROUND } from "../utils/constants";
 import lang from "../utils/languageConstants";
 import { useSelector } from "react-redux";
 import client from "../utils/openai";
@@ -8,25 +8,42 @@ const GptSearchBar = () => {
 
   const searchText = useRef(null);
 
+  const searchMovieTMDB = async (movie) => {
+    const data = await fetch(
+      "https://api.themoviedb.org/3/search/movie?query=" +
+        movie +
+        "&include_adult=false&language=en-US&page=1",
+      API_OPTIONS
+    );
+
+    const json = await data.json();
+
+    return json.results;
+  };
+
   const handleGptSearchClick = async () => {
-    const gptResults = await client.chat.completions
-      .create({
-        messages: [
-          {
-            role: "system",
-            content:
-              "You are a movie recommendation system. Respond with exactly 5 movie names of the genre asked, each name separated by a comma, no extra text. Example: inception, interstellar, shutter island, se7en, fight club.",
-          },
-          {
-            role: "user",
-            content: searchText.current.value,
-          },
-        ],
-        model: "llama-3.3-70b-versatile",
-      })
-      .then((chatCompletion) => {
-        console.log(chatCompletion.choices[0]?.message?.content || "");
-      });
+    const gptResults = await client.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are a movie recommendation system. Respond with exactly 5 movie names of the genre asked, each name separated by a comma, no extra text. Example: inception, interstellar, shutter island, se7en, fight club.",
+        },
+        {
+          role: "user",
+          content: searchText.current.value,
+        },
+      ],
+      model: "llama-3.3-70b-versatile",
+    });
+
+    console.log(gptResults.choices[0]?.message?.content || "");
+
+    const gptMovies = gptResults.choices[0]?.message?.content.split(", ");
+
+    console.log(gptMovies);
+
+    const data = gptMovies.map((movie) => searchMovieTMDB(movie));
   };
 
   return (
