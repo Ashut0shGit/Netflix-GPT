@@ -2,6 +2,8 @@ import React from "react";
 import { IMG_CDN_URL } from "../utils/constants";
 
 const MovieCard = ({ posterPath }) => {
+  if (!posterPath) return null;
+
   return (
     <div
       className="inline-block w-[150px] md:w-[180px] lg:w-[180px] shrink-0 

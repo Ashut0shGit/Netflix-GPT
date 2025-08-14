@@ -6,7 +6,7 @@ const GptSearch = () => {
   return (
     <div>
       <GptSearchBar />
-      <GptMovieSuggestions />
+      {/* <GptMovieSuggestions /> */}
     </div>
   );
 };
