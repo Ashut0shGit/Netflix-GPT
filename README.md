@@ -6,8 +6,9 @@ Browse movies from TMDB, watch trailers, and get AI-powered movie recommendation
 ---
 
 ## 🚀 Live Demo
-[![Watch the demo](https://img.youtube.com/vi/p82y6PdajPQ/maxresdefault.jpg)](https://youtu.be/p82y6PdajPQ)  
-*(Click the image to watch on YouTube)*
+
+<video src="https://github.com/user-attachments/assets/0330bd10-450b-4a89-a83f-0c2e8ca6758b" controls width="800"></video>
+
 
 ---
 
