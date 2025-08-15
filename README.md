@@ -33,13 +33,14 @@ Browse movies from TMDB, watch trailers, and get AI-powered movie recommendation
 - 🎞 **Trailers** — Watch movie trailers directly
 - 📱 **Responsive UI** — Works on desktop and mobile
 - 🔒 **Secure API Key Handling** — Keys stored in `.env` (not committed to repo)
-
+- 🔥 **Firebase BaaS** — Authentication, Firestore database, and hosting
 ---
 
 ## 🛠 Tech Stack
 - **Frontend:** React, Redux Toolkit, Tailwind CSS
 - **AI Integration:** Groq API
 - **Movie Data:** TMDB API
+- **BaaS:** Firebase (Authentication, Firestore, Hosting)
 ---
 
 ## 📦 Installation
